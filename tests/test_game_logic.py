@@ -1,5 +1,5 @@
 import pytest
-from game_of_greed.game_logic import GameLogic
+from game_of_greed.game_logic import GameLogic,Banker
 
 def test_roll_dice_1():
     actual = len(GameLogic.roll_dice(5))
@@ -158,3 +158,23 @@ def test_six_ones():
 def test_all(test_input, expected):
     actual = GameLogic.calculate_score(test_input)
     assert actual == expected
+
+def test_new_banker():
+    banker = Banker()
+    assert banker.balance == 0
+    assert banker.shelved == 0
+
+
+def test_shelf():
+    banker = Banker()
+    banker.shelf(100)
+    assert banker.shelved == 100
+    assert banker.balance == 0
+
+
+def test_deposit():
+    banker = Banker()
+    banker.shelf(100)
+    banker.bank()
+    assert banker.shelved == 0
+    assert banker.balance == 100
