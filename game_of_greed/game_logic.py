@@ -5,7 +5,7 @@ class GameLogic:
     def calculate_score(x):
         score=0
         count = Counter(x).most_common(6)
-        print(count)
+        # print(count)
         if len(count)==6:
             score+=(1500)
         else:
