@@ -1,7 +1,5 @@
 import random
 from collections import Counter
-import random
-from collections import Counter
 class GameLogic:
     @staticmethod
     def calculate_score(x):
