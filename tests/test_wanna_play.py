@@ -5,3 +5,6 @@ def test_quitter():
 
 def test_wanna_play_then_quit():
     Flo.test("tests/flow/do_wanna_play_then_quit.txt")
+
+def test_bank_one_roll_then_quit():
+    Flo.test("tests/flow/bank_one_roll_then_quit.txt")

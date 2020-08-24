@@ -1,4 +1,4 @@
-from game_logic import GameLogic, Banker
+from game_of_greed.game_logic import GameLogic, Banker
 
 class Game:
     def __init__(self, roller=GameLogic.roll_dice):
@@ -17,33 +17,55 @@ class Game:
         return tuple(y)
 
     def play(self):
-        round = 1
-        num_dice = 6
+        round = 0
+        
         score = 0
+        unbanked = 0
+        total = 0
 
         print("Welcome to Game of Greed")
         response = input("Wanna play?")
         if response == 'n':
             print("OK. Maybe another time")
         elif response == 'y':
-           
-            print(f"Starting round {round}")
-            print(f"Rolling {num_dice} dice...")
-            roll = self.roller(num_dice)
-            Game.print_roll(roll)
-            what_next = input("Enter dice to keep (no spaces), or (q)uit:")
-            if what_next == 'q' or what_next == 'quit':
-                print(f"Total score is {score} points")
-                print(f"Thanks for playing. You earned {score} points")
-            elif what_next != ('q' or 'quit'):
-                while what_next:
-                        if len(what_next) > 6:
-                            what_next = input("Enter dice to keep (no spaces), or (q)uit:") 
-                        else:
-                            break
-                
-                input_dice = int(what_next)
-                print(Game.split(input_dice))
+            
+            while True:
+                num_dice = 6
+                round += 1
+                print(f"Starting round {round}")
+                print(f"Rolling {num_dice} dice...")
+                roll = self.roller(num_dice)
+                Game.print_roll(roll)
+                what_next = input("Enter dice to keep (no spaces), or (q)uit: ")
+                if what_next == 'q' or what_next == 'quit':
+                    print(f"Total score is {total} points")
+                    print(f"Thanks for playing. You earned {total} points")
+                    break
+                elif what_next != ('q' or 'quit'):
+                    length = len(what_next)
+                    num_dice = num_dice - length
+                    input_dice = int(what_next)
+                    to_top = Game.split(input_dice)
+                    unbanked = GameLogic.calculate_score(to_top)
+                    print(f"You have {unbanked} unbanked points and {num_dice} dice remaining")
+                    new_responce = input("(r)oll again, (b)ank your points or (q)uit ")
+                    if new_responce == 'b':
+                        total = total + unbanked
+                        print(f"You banked {unbanked} points in round {round}")
+                        unbanked = 0
+                        print(f"Total score is {total} points")
+
+                    elif new_responce == 'q':
+                        
+                        print(f"Total score is {total} points")
+                        print(f"Thanks for playing. You earned {total} points")
+                        break
+                    
+                     
+                            
+                    
+                    
+
                             
                 
                 
