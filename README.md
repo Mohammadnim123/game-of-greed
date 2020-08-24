@@ -15,10 +15,10 @@
 [PR4](https://github.com/Mohammadnim123/game-of-greed/pull/4)
 
 **Day Two:**
-[PR5]()
-[PR6]()
-[PR7]()
-[PR8]()
+[PR5](https://github.com/Mohammadnim123/game-of-greed/pull/5)
+[PR6](https://github.com/Mohammadnim123/game-of-greed/pull/6)
+[PR7](https://github.com/Mohammadnim123/game-of-greed/pull/7)
+[PR8](https://github.com/Mohammadnim123/game-of-greed/pull/8)
 
 # Notes:
 full python script, bassed on usenig class and if statement and while loop, it's very easy to read.
