@@ -20,8 +20,9 @@ class Game:
         round = 0
         
         score = 0
-        unbanked = 0
-        total = 0
+        
+        
+        new_banker = Banker()
 
         print("Welcome to Game of Greed")
         response = input("Wanna play?")
@@ -38,27 +39,27 @@ class Game:
                 Game.print_roll(roll)
                 what_next = input("Enter dice to keep (no spaces), or (q)uit: ")
                 if what_next == 'q' or what_next == 'quit':
-                    print(f"Total score is {total} points")
-                    print(f"Thanks for playing. You earned {total} points")
+                    print(f"Total score is {new_banker.balance} points")
+                    print(f"Thanks for playing. You earned {new_banker.balance} points")
                     break
                 elif what_next != ('q' or 'quit'):
                     length = len(what_next)
                     num_dice = num_dice - length
                     input_dice = int(what_next)
                     to_top = Game.split(input_dice)
-                    unbanked = GameLogic.calculate_score(to_top)
-                    print(f"You have {unbanked} unbanked points and {num_dice} dice remaining")
+                    new_banker.shelved = GameLogic.calculate_score(to_top)
+                    print(f"You have {new_banker.shelved} unbanked points and {num_dice} dice remaining")
                     new_responce = input("(r)oll again, (b)ank your points or (q)uit ")
                     if new_responce == 'b':
-                        total = total + unbanked
-                        print(f"You banked {unbanked} points in round {round}")
-                        unbanked = 0
-                        print(f"Total score is {total} points")
+                        new_banker.balance = new_banker.balance + new_banker.shelved
+                        print(f"You banked {new_banker.shelved} points in round {round}")
+                        new_banker.shelved = 0
+                        print(f"Total score is {new_banker.balance} points")
 
                     elif new_responce == 'q':
                         
-                        print(f"Total score is {total} points")
-                        print(f"Thanks for playing. You earned {total} points")
+                        print(f"Total score is {new_banker.balance} points")
+                        print(f"Thanks for playing. You earned {new_banker.balance} points")
                         break
                     
                      
