@@ -19,6 +19,7 @@
 [PR6](https://github.com/Mohammadnim123/game-of-greed/pull/6)
 [PR7](https://github.com/Mohammadnim123/game-of-greed/pull/7)
 [PR8](https://github.com/Mohammadnim123/game-of-greed/pull/8)
+[PR8](https://github.com/Mohammadnim123/game-of-greed/pull/9)
 
 # Notes:
 full python script, bassed on usenig class and if statement and while loop, it's very easy to read.
