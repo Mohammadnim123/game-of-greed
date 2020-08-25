@@ -12,5 +12,5 @@ def test_bank_one_roll_then_quit():
 def test_bank_first_for_two_rounds():
     Flo.test("tests/flow/bank_first_for_two_rounds.txt")
 
-# def test_cheat_and_fix():
-#     Flo.test("tests/flow/cheat_and_fix.txt")
+def test_cheat_and_fix():
+    Flo.test("tests/flow/cheat_and_fix.txt")

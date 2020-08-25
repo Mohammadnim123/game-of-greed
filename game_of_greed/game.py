@@ -2,6 +2,7 @@ from game_of_greed.game_logic import GameLogic, Banker
 class Game:
     def __init__(self, roller=GameLogic.roll_dice):
         self.roller= roller
+
     @staticmethod
     def print_roll(roll):
         if roll == 'q':
@@ -15,6 +16,7 @@ class Game:
         y = [int(i) for i in str(x)]
         return tuple(y)
     def play(self):
+        is_it_cheater=False
         round = 0
         score = 0
         new_banker = Banker()
@@ -32,18 +34,27 @@ class Game:
                 Game.print_roll(roll)
                 what_next = input("Enter dice to keep (no spaces), or (q)uit: ")
                 if what_next == 'q':
-                    print(f"Total score is {new_banker.balance} points")
-                    print(f"Thanks for playing. You earned {new_banker.balance} points")
-                    break
+                    if is_it_cheater:
+                        print(f"Thanks for playing. You earned {new_banker.balance} points")
+                        break
+                    else:
+                        print(f"Total score is {new_banker.balance} points")
+                        print(f"Thanks for playing. You earned {new_banker.balance} points")
+                        break
                 else:
                     while GameLogic.if_cheater(roll,Game.totuple(what_next))==0:
+                        is_it_cheater=True
                         print('Cheater!!! Or possibly made a typo...')
                         Game.print_roll(roll)
                         what_next = input("Enter dice to keep (no spaces), or (q)uit: ")
                 if what_next == 'q' or what_next == 'quit':
-                    print(f"Total score is {new_banker.balance} points")
-                    print(f"Thanks for playing. You earned {new_banker.balance} points")
-                    break
+                    if is_it_cheater:
+                        print(f"Thanks for playing. You earned {new_banker.balance} points")
+                        break
+                    else:
+                        print(f"Total score is {new_banker.balance} points")
+                        print(f"Thanks for playing. You earned {new_banker.balance} points")
+                        break
                 elif what_next != ('q' or 'quit'):
                     length = len(what_next)
                     num_dice = num_dice - length
@@ -58,9 +69,13 @@ class Game:
                         new_banker.shelved = 0
                         print(f"Total score is {new_banker.balance} points")
                     elif new_responce == 'q':
-                        print(f"Total score is {new_banker.balance} points")
-                        print(f"Thanks for playing. You earned {new_banker.balance} points")
-                        break
+                        if is_it_cheater:
+                            print(f"Thanks for playing. You earned {new_banker.balance} points")
+                            break
+                        else:
+                            print(f"Total score is {new_banker.balance} points")
+                            print(f"Thanks for playing. You earned {new_banker.balance} points")
+                            break
 if __name__ == "__main__":
     user = Game()
     user.play()
