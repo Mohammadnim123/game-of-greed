@@ -10,7 +10,7 @@ class GameLogic:
             score+=(1500)
         else:
             if len(count)==3 and (count[0][1]==count[1][1]==count[2][1]):
-                score+=(750)
+                score+=(1500)
             else:
                 i=0
                 while i < len(count):
