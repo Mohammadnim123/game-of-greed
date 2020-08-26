@@ -25,6 +25,8 @@
 [PR10](https://github.com/Mohammadnim123/game-of-greed/pull/10)
 [PR11](https://github.com/Mohammadnim123/game-of-greed/pull/11)
 
+**Day four:**
+[PR12](https://github.com/Mohammadnim123/game-of-greed/pull/12)
 
 # Notes:
 full python script, bassed on usenig class and if statement and while loop, it's very easy to read.
