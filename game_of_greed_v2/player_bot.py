@@ -83,6 +83,7 @@ class Mr_angry(BasePlayer):
         first_char = first_arg[0]
         if first_char.isdigit():
             self.roll = tuple(int(char) for char in first_arg.split(","))
+            # self.old_print(self.roll)
         elif first_arg.startswith("Thanks for playing."):
             self.total_score = int(re.findall(r"\d+", first_arg)[0])
         self.old_print(first_arg)
@@ -99,19 +100,20 @@ class Mr_angry(BasePlayer):
         elif prompt.startswith("(r)oll again, (b)ank your points or (q)uit "):
             scorers = GameLogic.get_scorers(self.roll)
             keepers = "".join([str(ch) for ch in scorers])
-            if len(keepers)>=4:
-                self.old_print(prompt, 'b')
-                return "b"
-            else:
+            # self.old_print(scorers)
+            if (len(self.roll) - len(keepers))>3 or len(keepers) == 6:
                 self.old_print(prompt, 'r')
                 return "r"
+            else:
 
+                self.old_print(prompt, 'b')
+                return "b"
         else:
             raise ValueError(f"Unrecognized prompt {prompt}")
 if __name__ == "__main__":
     # Ali.play(20)
-    NervousNellie.play(100)
-    # Mr_angry.play(100)
+    # NervousNellie.play(100)
+    Mr_angry.play(100)
 
 
 
